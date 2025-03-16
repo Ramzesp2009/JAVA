@@ -1,0 +1,10 @@
+{
+    "editor.fontSize": 18,
+    "scm.inputFontSize": 18,
+    "debug.console.fontSize": 18,
+    "editor.minimap.sectionHeaderFontSize": 18,
+    "terminal.integrated.fontSize": 18,
+    "chat.editor.fontSize": 18,
+    "markdown.preview.fontSize": 18,
+    "java.debug.settings.onBuildFailureProceed": true
+}
