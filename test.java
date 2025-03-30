@@ -1,17 +1,24 @@
-import java.util.HashSet;
-import java.util.Set;
-
 class test {
     public static void main(String[] args) {
-        Set<Contact> contacts = new HashSet<>();
-        Contact anna = new Contact("Anna", "Schulz", "123456789", "anna@schulz.de");
-        contacts.add(anna);
-        Contact beth = new Contact("Beth", "Schulz", "987654321", "beth@schulz.de");
-        contacts.add(beth);
-        Contact beth2 = new Contact("Ben", "Schuhemacher", "987654321", "ben@schuhemacher.de");
-        contacts.add(beth2);
-        for (Contact contact : contacts) {
-            System.out.println(contact.getFirstName() + " " + contact.getLastName() + "; Telefon: " + contact.getPhone() + "; E-Mail: " + contact.getEmail());
+        int numbers[] = {5, 1, 8, 3, 9, 2, 7};
+        int searchValue = 8;
+        int index = linearSearch(numbers, searchValue);
+        if (index > -1) {
+            System.out.printf(
+                "%d kommt in der Liste an Position %d vor.\n",
+                searchValue, index
+            );
+        } else {
+            System.out.println(searchValue + " kommt nicht in der Liste vor.");
         }
+    }
+
+    static int linearSearch(int[] list, int value) {
+        for (int i = 0; i < list.length; i++) {
+            if (list[i] == value) {
+                return i;
+            }
+        }
+        return -1;
     }
 }
