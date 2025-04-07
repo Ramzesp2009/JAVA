@@ -18,7 +18,7 @@ public class Maze implements PathSearchable<GridLocation> {
                     "Alle Zeilen benotigen die Lange " + length
                     );
             }
-        }
+        
         for (int i = 0; i < length; i++) {
             char current = line.charAt(i);
             switch (current) {
@@ -43,7 +43,8 @@ public class Maze implements PathSearchable<GridLocation> {
     if (this.startLocation == null || this.goalLocation == null) {
         throw new IllegalArgumentException(
             "Kein Start- oder Endpunkt gefunden"
-        );
+            );
+        }
     }
 
 
@@ -74,6 +75,13 @@ public class Maze implements PathSearchable<GridLocation> {
     @Override
     public boolean isGoal(GridLocation location) {
         return location.equals(this.goalLocation);
+    }
+    
+    @Override
+    public double heuristic(GridLocation location) {
+        int rows = location.getRow() - this.goalLocation.getRow();
+        int columns = location.getColumn() - this.goalLocation.getColumn();
+        return Math.sqrt(Math.pow(rows, 2) + Math.pow(columns, 2));
     }
 
     public void print(List<GridLocation> path) {
@@ -121,7 +129,7 @@ public class Maze implements PathSearchable<GridLocation> {
         maze.print();
         System.out.println();
         System.out.println("Tiefensuche");
-        Node<GridLocation> solution1 = PathSearch.dfs(maze.startLocation, maze);
+        WeightedNode<GridLocation> solution1 = PathSearch.astar(maze.startLocation, maze);
         if (solution1 != null) {
             maze.print(new ArrayList<GridLocation>(solution1.toPath()));
         } else {
@@ -129,5 +137,6 @@ public class Maze implements PathSearchable<GridLocation> {
         }
         System.out.println();
     }
+
 }
 
