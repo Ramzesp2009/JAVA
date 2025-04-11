@@ -12,7 +12,7 @@ public class BranchSearch implements PathSearchable<Branch<Integer>> {
     
     @Override
     public List<Branch<Integer>> successors(Branch<Integer> branch) {
-        List<Branch<Integer>> result = new ArrayList<>()
+        List<Branch<Integer>> result = new ArrayList<>();
         Branch<Integer> left = branch.getLeft();
         Branch<Integer> right = branch.getRight();
         if (left != null) {
@@ -37,7 +37,7 @@ public class BranchSearch implements PathSearchable<Branch<Integer>> {
     
     public static void printGoal(Node<Branch<Integer>> goal) {
         if (goal != null) {
-            Deque<Branch<Integer>> path = goal.toPath();
+            Deque<Branch<Integer>> goalPath = goal.toPath();
             while (goalPath.size() > 0) {
                 System.out.print(" " + goalPath.removeLast().getValue());
             }
